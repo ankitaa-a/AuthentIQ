@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"/>
+    <title>AuthentIQ</title>
+</head>
+<body>
+<!--header-->
+<header class="text-gray-600 body-font">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <img class="object-cover object-center rounded" alt="hero" src="../static/det.png" width="50"
+                 height="50">
+            <span class="ml-3 text-xl" style="font-size: 24px;">AuthentIQ</span>
+        </a>
+        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a class="mr-5 hover:text-gray-900">Home</a>
+            <a class="mr-5 hover:text-gray-900">About Us</a>
+            <a class="mr-5 hover:text-gray-900">Prediction</a>
+            <a class="mr-5 hover:text-gray-900">Contact</a>
+        </nav>
+
+    </div>
+</header>
+<hr>
+
+<!--middle box-->
+<section class="text-gray-600 body-font">
+    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+        <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+            <img class="object-cover object-center rounded" alt="hero"
+                 src="https://source.unsplash.com/720x600/?news,newspaper">
+        </div>
+        <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Fake News Detector</h1>
+            <p class="mb-8 leading-relaxed">"Separating Fact from Fiction, One Click at a Time."</p>
+            <div class="flex w-full md:justify-start justify-center items-end">
+                <button id="upload-image" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Upload Image
+                </button>
+                <button id="stream-video" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                    Stream Live Video
+                </button>
+            </div>
+            <p class="text-sm mt-2 text-gray-500 mb-8 w-full" id="prediction-result">Unmasking Deception</p>
+            <div id="video-container" class="hidden">
+                <video id="video" width="640" height="480" autoplay></video>
+            </div>
+            <div id="file-container" class="hidden">
+                <input type="file" id="file-input" accept="image/*">
+            </div>
+            <button id="authenticate-button" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                Authenticate
+            </button>
+            <div id="result-box" class="mt-4">
+                <p id="plate-number" class="text-lg font-bold"></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--footer-->
+<footer class="text-gray-600 body-font">
+    <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
+        <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <img class="object-cover object-center rounded" alt="hero" src="../static/det.png" width="30" height="30">
+            <span class="ml-3 text-xl" style="font-size: 20px;">AuthentIQ</span>
+        </a>
+        <p class="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">AuthentIQ —
+            <a href="https://twitter.com/knyttneve" class="text-gray-600 ml-1" rel="noopener noreferrer"
+               target="_blank">Media</a>
+        </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+            <a class="text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     class="w-5 h-5" viewBox="0 0 24 24">
+                    <path
+                        d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     class="w-5 h-5" viewBox="0 0 24 24">
+                    <path
+                        d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
+                </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                     stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                    <path
+                        d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                </svg>
+            </a>
+            <a class="ml-3 text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                     class="w-5 h-5" viewBox="0 0 24 24">
+                    <path
+                        d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                </svg>
+            </a>
+        </span>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const uploadImageButton = document.getElementById('upload-image');
+        const streamVideoButton = document.getElementById('stream-video');
+        const fileInput = document.getElementById('file-input');
+        const videoContainer = document.getElementById('video-container');
+        const videoElement = document.getElementById('video');
+        const fileContainer = document.getElementById('file-container');
+        const authenticateButton = document.getElementById('authenticate-button');
+        const predictionResult = document.getElementById('prediction-result');
+        const plateNumberBox = document.getElementById('plate-number');
+
+        uploadImageButton.addEventListener('click', () => {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.src = e.target.result;
+                    img.onload = () => {
+                        // Display the image
+                        // Remove the video element if visible
+                        videoContainer.classList.add('hidden');
+                        fileContainer.classList.remove('hidden');
+                        videoElement.srcObject = null;
+                        videoElement.pause();
+                        // Send the image to the backend for processing
+                        const formData = new FormData();
+                        formData.append('image', file);
+                        fetch('/predict', {
+                            method: 'POST',
+                            body: formData
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            predictionResult.textContent = `Prediction: ${data.prediction}`;
+                            plateNumberBox.textContent = `Plate Number: ${data.plate_number}`;
+                        })
+                        .catch(error => console.error('Error:', error));
+                    };
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        streamVideoButton.addEventListener('click', () => {
+            // Enable webcam
+            navigator.mediaDevices.getUserMedia({video: true})
+                .then((stream) => {
+                    videoContainer.classList.remove('hidden');
+                    fileContainer.classList.add('hidden');
+                    videoElement.srcObject = stream;
+                    videoElement.play();
+                })
+                .catch((err) => {
+                    console.error('Error accessing webcam:', err);
+                });
+        });
+
+        authenticateButton.addEventListener('click', () => {
+            // Send the live video frame to the backend for processing
+            const canvas = document.createElement('canvas');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+            const imageData = canvas.toDataURL('image/jpeg');
+            const formData = new FormData();
+            formData.append('image', imageData);
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                predictionResult.textContent = `Prediction: ${data.prediction}`;
+                plateNumberBox.textContent = `Plate Number: ${data.plate_number}`;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    });
+</script>
+</body>
+</html>
